@@ -1,0 +1,12 @@
+Description: Single_Instance
+Resources:
+  EC2Instance:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      ImageId: ami-015e832ac6a60f0de
+      AvailabilityZone: us-west-1a
+      InstanceType: t2.micro
+      Tags:
+        - Key: Name
+          Value: elviniangoran2024
+          
