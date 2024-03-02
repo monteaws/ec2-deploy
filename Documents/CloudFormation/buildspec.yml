@@ -1,0 +1,36 @@
+version: 0.2
+
+phases:
+  install:
+  Runtime-versions:
+    python: 3.8 # INSTALL PYTHON 3.8 ON THE INSTANCE
+
+    commands:
+      - echo Entered the install phase...
+      - echo installing cfn-lint
+      - pip3 install cfn-lint
+
+  pre_build:
+    commands:
+      - echo Entered the pre_build phase...
+      - checking the version of python installed
+      - python3 --version
+      - echo checking the version of CFN-LINT installed
+      - cfn-lint --version
+    
+  build:
+    commands:
+      - echo Entered the build phase...
+      - echo validating the cloudformation template
+      - 2024-02-26T210255.444Zjez-Homework-yaml
+      - echo building the cloudformation
+      - aws cloudformation package --template-file 2024-02-26T210255.444Zjez-Homework-yaml --s3-bucket myartifact-bucket --output-template-file packaged-output-template.yml
+    
+  post_build:
+    commands:
+      - echo Entered the post_build phase...
+      - echo Build completed on 'date'
+  
+artifacts:
+  files:
+    - packaged-output-template.yml
